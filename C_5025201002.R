@@ -47,16 +47,25 @@ group1 <- subset(dataOneWay, V1=="Kucing Oren")
 group2 <- subset(dataOneWay, V1=="Kucing Hitam")
 group3 <- subset(dataOneWay, V1=="Kucing Putih")
 
+qqnorm(group1$Length)
+qqline(group1$Length)
+
+qqnorm(Group2$Length)
+qqline(Group2$Length)
+
+qqnorm(Group3$Length)
+qqline(Group3$Length)
 
 #B. carilah atau periksalah Homogeneity of variances nya , Berapa nilai p yang
 #didapatkan? , Apa hipotesis dan kesimpulan yang dapat diambil ?
-bartlett.test(Length~V1, data=dataOneWay)
+bartlett.test(Length~Group, data=dataOneWay)
 
 
 #  C. Untuk uji ANOVA (satu arah), buatlah model linier dengan Panjang versus
 #Grup dan beri nama model tersebut model 1.
-qqnorm(group1$Length)
-qqline(group1$Length)
+model1 <- lm(Length~Group, data=dataOneWay)
+
+anova(model1)
 
 #D. Dari Hasil Poin C, Berapakah nilai-p ? , Apa yang dapat Anda simpulkan
 #dari H0?
@@ -65,9 +74,6 @@ qqline(group1$Length)
 #  E. Verifikasilah jawaban model 1 dengan Post-hoc test Tukey HSD, dari nilai p
 #yang didapatkan apakah satu jenis kucing lebih panjang dari yang lain?
 #  Jelaskan.
-model1 <- lm(Length~group, data=dataOneWay)
-
-anova(model1)
 
 TukeyHSD(aov(model1))
 
