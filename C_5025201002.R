@@ -27,6 +27,31 @@ tsum.test(mean.x=23500, sd(3900), n.x=100)
 #2c
 # Jawaban di README yaa
 
+# No 3
+library(BSDA)
+library(mosaic)
+#a) H0 dan H1
+# H0 = (miu1 = miu2)
+# H1 = (miu1 != miu2) 
+
+#b) Sampel statistik menggunakan uji t
+tsum.test(mean.x=3.64, s.x = 1.67, n.x = 19, 
+          mean.y=2.79, s.y = 1.32, n.y = 27, 
+          alternative = "two.sided", mu = 0, var.equal = TRUE,
+          conf.level = 0.95)
+
+#c) Uji statistik dengan df = 2
+plotDist(dist ='t', df = 2, col="pink")
+
+#d) Nilai Kritikal
+qt(p = 0.05, df = 2, lower.tail = FALSE)
+
+#e) Keputusan
+# Karena p-value < a , Hipotesis awal ditolak
+
+#f) Kesimpulan
+# Dengan tingkat keyakinan 95%, diyakini bahwa tidak terdapat 
+# perbedaan rata-rata saham pada perusahaan di Bandung dan Bali.
 
 # No 4
 
